@@ -1,0 +1,1362 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/responsive.css" rel="stylesheet" type="text/css" >
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css" >
+<title>Home</title>
+</head>
+
+<body class="bodyBg">
+<div class="header">
+  <div class="wrapper">
+    <nav class="navbar navbar-inverse">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <div class="logo"> <a href="#"><img src="images/whitelogo.png" alt="#"></a> </div>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Standards</a></li>
+          <li><a href="#">Membership</a></li>
+          <li><a href="#">About CCC</a></li>
+          <li><a href="#">Meetings</a></li>
+          <li><a href="#">Software</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- End Header -->
+<div class="wrapper">
+  <div class="CloudStandards">
+    <div class="container">
+      <h1>CloudCoin Standards</h1>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="fileType">
+            <h2>RAIDA API Standards</h2>
+            <ul>
+              <li><a href="#DirectoryServices">Directory Service</a></li>
+              <li><a href="#EchoService">Echo Service</a></li>
+              <li><a href="#Detection_Service">Detect Service</a></li>
+              <li><a href="#Fix_Process">Fix Service</a></li>
+              <li><a href="#General_Errors">General Errors</a></li>
+              <li><a href="#mony">Standard Money Images</a></li>
+              <li><a href="#Multi_Detectl">Multi -Detect Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="fileType">
+            <h2>File Formats</h2>
+            <ul>
+              <li><a href="#Structure_CloudCoina">CloudCoin Structure</a></li>
+              <li><a href="#Structure_CloudCoina">CloudCoin Denominations</a></li>
+              <li><a href="#JPEG_File">CloudCoin JPEG File Format</a></li>
+              <li><a href="#JSON_File">CloudCoin JSON File Format</a></li>
+              <li><a href="#AOID_Standards">AOID Standards</a></li>
+              <li><a href="#Grading_CloudCoins">Grades</a></li>
+              <li><a href="#Mind_Storage">Mind Storage</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="container">
+    <div id="DirectoryServices" class="DirectoryServices">
+      <h2>Directory Services: V 3.27.2018</h2>
+      <h4>Purpose:</h4>
+      <p>The purpose of the Directory Service API is to provide a backup system for a program (or user) to learn the names or IP addresses of the RAIDA servers so they can be contacted. The Directory Service may provide the RAIDA contact information in a different (and yet uninvented) format if convenient to the application. In other words, a separate, non-JSON service could easily be created. A dynamic RAIDA Directory is planned for the future but may not be necessary for years. THE DIRECTORY SERVICE HAS YET TO BE IMPLEMENTED.</p>
+      <p>For network 1, the default locations that can be tried first, before accessing the directory. The names are case insensitive. are:</p>
+      <p><span>https://RAIDA0.CloudCoin.Global</span></p>
+      <p><span>https://RAIDA0.CloudCoin.Global</span></p>
+      ...
+      <p><span>https://RAIDA0.CloudCoin.Global</span></p>
+      <p><span>https://RAIDA0.CloudCoin.Global</span></p>
+      <p>For future networks (should network multiplication occur) the names of the servers will have a default names such as <span>RAIDA0_Net2</span> through <span>RAIDA24_Net2</span> where Net2 means they are on network 2.</p>
+      <h4>Default Names:</h4>
+      <p><span>https://RAIDA0.CloudCoin.Global</span></p>
+      <p><span>https://RAIDA0.CloudCoin.Global</span></p>
+      ...
+      <p><span>https://RAIDA0.CloudCoin.Global</span></p>
+      <p><span>https://RAIDA0.CloudCoin.Global</span></p>
+      <h4>Directory Request:</h4>
+      <p>Client uses HTTPS to GET the directory page located on different servers. Note that <span>directory</span> uses extension-less urls.</p>
+      <h4>Example of a Directory Request:</h4>
+      <p><span>//www.cloudcoin.global/servers.html</span></p>
+      <p>A test directgory can be found at:</p>
+      <p><span>//www.cloudcoin.co/servers.html</span></p>
+      <h4>Directory Response:</h4>
+      <p>Server returns a JSON string that describes the URLs of the RAIDAs, the status, the milliseconds required to contact, and a port to use.</p>
+      <h4>Example of a Directory Response:</h4>
+      <p>&nbsp;</p>
+          <p>{</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;&nbsp;&nbsp; "networks":[</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {"nn":1,</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "raida":[</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {"raida_index":0, 
+            "failsEcho":"false","failsDetect":"false","failsFix":"false","failsTicket":"false","location":"au",</p>
+          <p>"urls":[&nbsp; {"url": "raida0.cloudcoin.global","port": 443,"milliseconds": 700}&nbsp;&nbsp; ]},</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {"raida_index":1, 
+            "failsEcho":"false","failsDetect":"false","failsFix":"false","failsTicket":"false","location":"mk",</p>
+          <p>"urls":[&nbsp; {"url": "raida1.cloudcoin.global","port": 443,"milliseconds": 700}&nbsp;&nbsp; ]},</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //RAIDA 2 though 23 left out for space.</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {"raida_index":24, 
+            "failsEcho":"false","failsDetect":"false","failsFix":"false","failsTicket":"false","location":"ca",</p>
+          <p>"urls":[ {"url": "raida24.cloudcoin.global","port": 443,"milliseconds": 700}&nbsp; ]}</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {"nn":2,</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "raida":[</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {"raida_index":0, 
+            "failsEcho":"false","failsDetect":"false","failsFix":"false","failsTicket":"false","location":"au",</p>
+          <p>"urls":[&nbsp; {"url": "raida0.srv.cloudcoin.digital","port": 443,"milliseconds": 700}&nbsp;&nbsp;&nbsp;&nbsp; ]},</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {"raida_index":1, 
+            "failsEcho":"false","failsDetect":"false","failsFix":"false","failsTicket":"false","location":"au",</p>
+          <p>"urls":[&nbsp; {"url": "raida1.srv.cloudcoin.digital","port": 443,"milliseconds": 700}&nbsp;&nbsp; ]},</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //RAIDA 2 though 23 left out for space.</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {"raida_index":24, 
+            "failsEcho":"false","failsDetect":"false","failsFix":"false","failsTicket":"false","location":"au",</p>
+          <p>"urls":[ {"url": "raida24.srv.cloudcoin.digital","port": 443,"milliseconds": 700} ]}</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</p>
+          <p>&nbsp;</p>
+          <p>}</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+      <h4>KEY</h4>
+      <ul>
+        <li>network: There may be many networks as the CloudCoins split.</li>
+        <li>nn: Network number. Now there is only one.</li>
+        <li>raida: list of all the RAIDA in the network</li>
+        <li>raida_index: A number between 0 and 24.</li>
+        <li>failsEcho: Answers the question: Does this RAIDA's echo service work? true or false</li>
+        <li>failsDetect: Answers the question: Does this RAIDA's detection service work? true or false</li>
+        <li>failsFix: Answers the question: Does this RAIDA's fix service work? true or false</li>
+        <li>failsTicket: Answers the question: Does this RAIDA's ticket service work? true or false</li>
+        <li>location: The country code of the country that the RAIDA cloud is primarily located. Use the list of top level domain codes: https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains</li>
+        <li>url:  The Fully Qualified Domain name of the Server (There may be more than one if the RAIDA has backups</li>
+        <li>milliseconds: Milliseconds. Time to echo. Gives an idea how fast that url is.</li>
+        <li>location: Where or who runs the RAIDA</li>
+        <li>port: Port number the RAIDA is using. Usually 80 or 443 but could be something different.</li>
+      </ul>
+      <h4>Rules</h4>
+      <p>The Directory Service may not respond if it is unavailable.</p>
+      <p>It is possible to add backup - or secondary - RAIDA by adding items with the same "url" to the urls directory. Then, RAIDA with the smallest ms could be contacted first. The Directory may be cached in case it becomes unavailable or even hard-coded in an application as a backup for fault tolerance.</p>
+      <p>The values are case-insensitive and should be compared accordingly.</p>
+      <p>All the services use extension less urls but here we start with .html</p>
+      <p>Typically, the ms (milliseconds required to contact) and the status are to be determined by the client using the Echo Service.</p>
+    </div>
+  </div>
+</div>
+
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="EchoService" class="EchoService">
+      <h2>Echo Service V 3.27.2017</h2>
+      <h4>Purpose:</h4>
+      <p>The purpose of the echo API is to allow a program (or user) to establish that a RAIDA is ready to detect the authenticity of CloudCoins and how many milliseconds the contact requires.</p>
+      <p>The client sends the RAIDA an Echo Request and the RAIDA will respond with a Echo Response.</p>
+      <h4>Echo Request:</h4>
+      <p>Client uses HTTPS and GET method for the echo url located in the service folder on the RAIDA server.</p>
+      <h4>Echo Request Example:</h4>
+      <p><span>https://RAIDA0.CloudCoin.Global/service/echo</span></p>
+      <h4>Echo Response Example:</h4>
+      <p>Server returns a Response Object using JSON that describes the name of the server, the status, a message, and a timestamp:</p>
+      <p>&nbsp;</p>
+          <p>{</p>
+          <p>&nbsp;"server":"RAIDA0",</p>
+          <p>&nbsp;"status":"ready",</p>
+          <p>&nbsp;"message":"Execution Time (milliseconds) = 2.3751258850098",</p>
+          <p>&nbsp;"time":"2018-03-28 02:14:43"</p>
+          <p>}</p>
+          <p>&nbsp;</p>
+      <h4>Rules:</h4>
+      <ul>
+        <li>The RAIDA may not respond if it is unavailable.</li>
+        <li>All Return Objects' key values are case in-sensitive and should be compared accordingly.</li>
+        <li>The names of the servers on Network 1 will always be one of 25 servers: RAIDA0 through RAIDA24. Note: server names are case-insensitive and should be compared accordingly.</li>
+        <li>In the future, if Doubling occurs, the names of the servers will have a network extension such as RAIDA0Net2 through RAIDA24Net2 where Net2 means they are on network 2.</li>
+        <li>The status will always be ready otherwise it will return an error. See General Errors.</li>
+        <li>The message will always be divided in two parts with a colon: The Subject and the Details.</li>
+        <li>The subject of the echo response will always be "Up" and the details will always be "Detection agent ready to detect authenticity." otherwise it will return an error. See General Errors.</li>
+        <li>The time is in GMT.</li>
+      </ul>
+      <h2>Echo Service Brief Mode V 3.27.17</h2>
+      <h4>Purpose:</h4>
+      <p>Brief mode allows for the a shorter "ready" response. The RAIDA would only return one word. The hope is that it would use less bandwidth and may be faster.</p>
+      <h4>Echo Request:</h4>
+      <p>Client uses HTTPS to GET the echo page located in the service file on the RAIDA server. An extra "b=t" is added on the end of the request. It means brief=true.</p>
+      <h4>Echo Request Example:</h4>
+      <p><span>https://RAIDA0.CloudCoin.Global/service/echo?b=t</span></p>
+      <h4>Echo Response Example:</h4>
+      <p><span>ready</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="Detection_Service" class="EchoService bgSec3">
+      <h2>Detection Service V 5.5.17</h2>
+      <h4>Purpose:</h4>
+      <p>The purpose of the Detect API is to allow the program or user to change the Authenticity Number in the RAIDA to a Proposed Authenticity Number so that ownership change of CloudCoin is possible.</p>
+      <h4>Detection Request:</h4>
+      <p>The program sends the RAIDA server an HTTPS GET request including the NN (network number), SN (Serial Number), AN (Authenticity Number), PAN(Proposed Authenticity Number) and Denomination of the CloudCoin that is to change ownership. The SN and the Denomination are like the CloudCoin's username.The AN is like the CloudCoins' password. The PAN is like a new password.</p>
+      <h4>Detection Request Example:</h4>
+      <p><span>https://RAIDA20.cloudcoin.global/service/detect?nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1</span></p>
+      <h4>Detection Response:</h4>
+      <p>Server returns a Response Object using JSON that describes the name of the server, the status, a message, and a time stamp.</p>
+      <h4>Detection Response Example If Passed:</h4>
+    <p>{</p>
+          <p>&nbsp; "server":"RAIDA1",</p>
+          <p>&nbsp; "status":"pass",</p>
+          <p>&nbsp; "sn":"1",</p>
+          <p>&nbsp; "nn":"1",</p>
+          <p>&nbsp; "message":"Authentic:1 is an authentic 
+            1-unit. Your Proposed Authenticity Number is now the new Authenticate 
+            Number. Update your file.",</p>
+          <p>&nbsp; "time":"2016-44-19 7:44:PM"</p>
+          <p>}</p>
+          <p>&nbsp;</p>
+      <p>Note that the 1 after the word Authentic: is the serial number of the unit that was tested.</p>
+      <h4>Detection Response Example If failed to authenticate:</h4>
+      <p>&nbsp;</p>
+          <p >Detection Response Example If failed to authenticate:</p>
+          <p>{</p>
+          <p>&nbsp; "server":"RAIDA1",</p>
+          <p>&nbsp; "status":"fail",</p>
+          <p>&nbsp; "sn":"1",</p>
+          <p>&nbsp; "nn":"1",</p>
+          <p>&nbsp; "message":"Counterfeit: The unit failed to authenticate on this server. You may need to fix it on other servers.",</p>
+          <p>&nbsp; "time":"2016-44-19 7:44:PM"</p>
+          <p>}</p>
+          <p>&nbsp;</p>
+      <p>Detection Response Example If failed because the denomination of the coin is not its real denomination (Someone is trying to falsify the denomination):</p>
+      <p><span>{"server":"RAIDA1","status":"fail","sn":"1","nn":"1""message":"Denomination: The item you are authenticating is a 250 units. However, the request was for a 25 units. Someone may be trying to pass you a money unit that is not of the true value ","time":"2016-11-21 9:11:PM"}</span></p>
+      <h4>If failed because of missing or out-of-range GET NN parameter:</h4>
+      <p>{"server":"RAIDA1","status":"error","message":"NN: The unit's network number was out of range or not on this server.","time":"2016-15-21 9:15:PM"}</p>
+      <h4>If failed because of missing or out-of-range GET SN parameter:</h4>
+      <p>{"server":"RAIDA1","status":"error","message":"SN: The unit's serial number was out of range.","time":"2016-15-21 9:15:PM"}</p>
+      <h4>If failed because of missing or out-of-range GET Denomination parameter:</h4>
+      <p>{"server":"RAIDA1","status":"error","message":"Denomination: The unit's Denomination was out of range.","time":"2016-04-21 9:04:PM"}</p>
+      <h4>If failed because of missing or out-of-range GET PAN parameter:</h4>
+      <p>{"server":"RAIDA1","status":"error","message":"PAN: The unit's Proposed Authenticity Number was out of range.","time":"2016-06-21 9:06:PM"}</p>
+      <h4>If failed because of missing or out-of-range GET AN parameter:</h4>
+      <p><span>{"server":"RAIDA1","status":"error","message":"AN: The unit's Authenticity Number was out of range.","time":"2016-07-21 9:07:PM"}</span></p>
+      <h4>Otherwise Detect should return a General Error</h4>
+      <h2>Detection Service Brief:</h2>
+      <p>The RAIDA responds with one word. A b=t is added to the GET request. Brief = True;</p>
+      <h4>Detection Request Example in Brief Mode:</h4>
+      <p><span>https://RAIDA20.cloudcoin.global/service/detect?nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1&b=t</span></p>
+      <h4>Detection Response Example in Brief Mode: Server returns one word, either pass, fail or error.</h4>
+      <p>pass</p>
+    </div>
+  </div>
+</div>
+
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="Fix_Process" class="EchoService bgSec4">
+      <h2>Fix Process:</h2>
+      <h4>Purpose:</h4>
+      <p>NOTE: YOU WILL WANT TO USE THE FOUR-TRUSTED SERVER FIXING. The purpose of the Fix API is to allow the program or user to repair "fractured" CloudCoins. A fractured CloudCoin is a CloudCoin that has some RAIDA servers failing authenticity. The CloudCoin owners can request that the fractured server ask its trusted servers (Neighbors) to vouch for them. By default, each RAIDA requires three servers (but will change to four servers) to vouch for CloudCoin in order to self-repair. There are four combinations of servers that the each RAIDA will trust. They will trust the three "corner" RAIDA on any of their four corners. With the numbers arranged in a circle like a clock, and the RAIDA being repaired being zero, the three servers needed to trust are -1.-5.-6 OR +1, -4, -5 OR -1, +4, +5 OR +1, +5 and +6. RAIDA12, for example, will trust RAIDA11 AND RAIDA7 AND RAIDA6 together, OR the three other combinations of three servers. Note that the Administrator for each RAIDA can change the server that their RAIDA trusts.</p>
+      <h3>Circle of Trust with 3 Servers</h3>
+      <div class="listItam">
+        <ul>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+          <li><a href="#"><img src="images/img-01.jpg" alt=""></a></li>
+        </ul>
+      </div>
+      <h2>Ticket Service</h2>
+      <h4>Trusted Server Identification:</h4>
+      <p>The program or user that has the fractured CloudCoin will identify the fractured RAIDA's trusted servers.</p>
+      <h4>Rules:</h4>
+      <div class="rule">
+        <ul>
+          <li>There are four combination of three corner servers that are trusted. See the four-corner diagram above. Note the numbers wrap around like a clock (see image above).</li>
+          <li>In order to repair, a fractured RAIDA must receive three tickets from specific triad of these trusted servers.</li>
+        </ul>
+        <h4>Ticket Request:</h4>
+        <p>Client makes a Ticket Request to trusted server triad (or in the future quad). Note that there are three separate requests going to three separate RAIDAs.</p>
+        <h4>Ticket Request Examples of an attempt to fix a fractured RAIDA1:</h4>
+        <p><span>https://raida0.cloudcoin.global/service/get_ticket?nn=1&sn=16777005&toserver=1&an=7ac477841f5cce2889e4329a0e994ee3&pan=7ac477841f5cce2889e4329a0e994ee3&denomination=250</span></p>
+        <p><span>https://raida0.cloudcoin.global/service/get_ticket?nn=1&sn=16777005&toserver=1&an=7ac477841f5cce2889e4329a0e994ee3&pan=7ac477841f5cce2889e4329a0e994ee3&denomination=250</span></p>
+        <p>These Ticket Request are the same as the Detection Request except that they include a "toserver" parameters. The toserver parameter describes the RAIDA number that is to be repaired (0 through 24). This facilitates advanced encryption between the fractured RAIDA and the trusted RAIDA if it becomes necessary.</p>
+        <h4>Ticket Response:</h4>
+        <p>The client will receive a "ticket" from each RAIDA that authenticates the Ticket Request. The ticket is exactly 44 characters in length and is a random and secret hexadecimal number. By default, the RAIDA servers will only honor a ticket that is less than 15 seconds old, but this amount can be changed by each RAIDA Administrator.</p>
+        <p>Note that the "message" from the Ticket Response is not divided into subject and details when it returns a ticket.</p>
+        <p><span><strong>Example Ticket:</strong> 23a399c5358fe88be678c45fa65747c81d31293cf44c</span></p>
+        <h4>Ticket Response if successful:</h4>
+        <p>{</p>
+            <p>&nbsp;"server":"RAIDA2",</p>
+            <p >&nbsp;"status":"ticket",</p>
+            <p>&nbsp;"sn":"1",</p>
+            <p >&nbsp;"nn":"1",</p>
+            <p>&nbsp;"message":"23a399c5358fe88be678c45fa65747c81d31293cf44c",</p>
+            <p>&nbsp;"time":"2016-40-21 10:40:PM"</p>
+            <p>}</p>
+            <p>&nbsp;</p>
+        <p>The Ticket fails are identical to the Detection fails</p>
+        <h2>Fix Service</h2>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="imgStandards"> <img src="images/fixit-crop-u2737.jpg"> </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="imgStandards"> <img src="images/fixit.jpg"> </div>
+          </div>
+        </div>
+        <h4>Fix Request:</h4>
+        <p>The fix request combines the outcomes of three ticket requests to send to the fractured RAIDA. The tickets must come from three of the corner servers.</p>
+        <h4>Fix Request Example attempting to fix RAIDA1:</h4>
+        <p><span>https://raida1.cloudcoin.global/service/fix?fromserver1=0&message1=4aa2b02d3d2279216009cfcdd8a04b46b24835f63632
+          
+          &fromserver2=2&message2=5ce45a6141ac9cb00233b11a900ea5302e9745051659&fromserver3=4&message3=23e45a6141ac9cb00233b11a900ea5302e9745051659&pan=E9611BF6FCBB1CB58CB62A5FC24A4B39</span></p>
+        <p><strong>Fix Response:</strong> The fix response tells the client if the fix attempt was successful or failed.</p>
+        <h4>Fix Response Example If success in repairing the fractured RAIDA:</h4>
+        <p><span>{
+          
+          "server":"RAIDA1",
+          
+          "status":"success",
+          
+          "message":"Fixed: Unit's AN was changed to the PAN. Update your AN to the new PAN.",
+          
+          "time":"2016-09-22 1:09:PM"
+          
+          }</span></p>
+        <p>If failed because a server number is not between the range of zero to 24 (inclusive):</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Server: Server 26 Out of Range.","time":"2016-39-22 11:39:AM"}</span></p>
+        <p>Note that the "26" number is a variable that will change.</p>
+        <p>If failed because the ticket (message) is not exactly 44 characters long:</p>
+        <p><span> {"server":"RAIDA1","status":"error","message":"Ticket: Message 1 Out of Range.","time":"2016-39-22 11:39:AM"}</span></p>
+        <p>If failed because a tickets (message) is not from a trusted server:</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Trust: Server 2 Not Trusted.","time":"2016-39-22 11:39:AM"}</span></p>
+        <p>Note that the "2" number is a variable(0-24) that will change.</p>
+        <p>If failed because a GET parameters where not supplied ( message1, message2, fromeserver1, fromserver2 and pan ):</p>
+        <p><span> {"server":"RAIDA1","status":"error","message":"GET Parameters: You must provide a message1, message2, fromeserver1, fromserver2 and pan.","time":"2016-39-22 11:39:AM"}</span></p>
+        <p>If failed because one of the trusted servers could not be contacted by the fractured RAIDA server:</p>
+        <p><span> {"server":"RAIDA1","status":"error","message":"Connection: Could not connect to Server 0.","time":"2016-39-22 11:39:AM"}</span></p>
+        <p>Note: "The "0" number is a variable (0-24) that will change.</p>
+        <p>If failed because one of the trusted servers reported that the Ticket(message/RN) was invalid (not 44 hex symbols):</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Remote Ticket: Server 4 said invalid ticket.","time":"2016-39-22 11:39:AM"}</span></p>
+        <p>Note: The "4" number is a variable (0-24) that will change.</p>
+        <p>If failed because one of the trusted servers reported that it did not authorize the Ticket ( Random Number ) and that the ticket was not found in its Fixit List:</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Remote Ticket: No Ticket found on Server 2.","time":"2016-39-22 11:39:AM"}</span></p>
+        <p>Note: The "2" number is a variable (0-24) that will change.</p>
+        <p>If failed because one of the trusted servers' databases reported some kind of error:</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Remote Ticket: Server 4 database said invalid ticket.","time":"2016-39-22 11:39:AM"}</span></p>
+        <p>Note: The "2" number is a variable (0-24) that will change.</p>
+        <p>If failed because one of the trusted servers reported a fixit-log time that was longer than the fractured RAIDA allows for:</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Time: Only 15 seconds where allowed for the fix but server 2 took 29.","time":"2016-39-22 11:39:AM"}</span></p>
+        <p>Note: The 15 seconds is a variable that can be changed by the RAIDA Administrator. The "2" number is a variable (0-24) that will change.</p>
+        <p>If failed because one of the trusted servers errored while trying to connect to it:</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Connection Exception: Server 0 System.Net.WebException: The remote server returned an error: (500) Internal Server Error. at System.Net.HttpWebRequest.GetResponse() at ASP.service_fix_aspx.Page_Load(Object sender, EventArgs e)//raida0.cloudcoin.global/service/hints?rn=f67d8b84ed22b806ac81f00227ca5637476a9197ef6a.","time":"2016-09-22 1:09:PM"}</span></p>
+        <p>Note: The "0" number is a variable (0-24) that will change.</p>
+        <p>If failed because the two trusted servers returned different serial numbers (they should return the same serial number):</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Mismatch: The Serial Numbers specified by the trusted remote servers did not match.","time":"2016-09-22 1:09:PM"}</span></p>
+        <p>If failed because one of the trusted servers returned a serial number that was invalid (Greater than 16,777,216 or less than 1:</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Remote SN: The trusted server provided an invalid Serial Number.","time":"2016-09-22 1:09:PM"}</span></p>
+        <p>Note: The "0" number is a variable (0-24) that will change.</p>
+        <p>If failed because of an unknown problem:</p>
+        <p><span>{"server":"RAIDA1","status":"error","message":"Unknown: There was a problem and the unit was not fixed. Most likely, the SN did not exist..","time":"2016-09-22 1:09:PM"}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="General_Errors" class="EchoService bgSec5">
+      <h2>General Errors:</h2>
+      <p>The purpose of custom errors provided in JSON form is that webapplications can more easily handle common errors. Note: RAIDA Administrators may turn off custom errors in order to troubleshoot problems. This assumes that Custom Errors are turned on in the RAIDA servers' webserver.</p>
+      <p><span>{"server":"RAIDA1","status":"error","message":"500: Internal Server Error","time":"2016-09-22 1:09:PM"}</span></p>
+      <p><span>{"server":"RAIDA1","status":"error","message":"404: Not Found","time":"2016-09-22 1:09:PM"}</span></p>
+      <p>The failure numbers will have values over 400.</p>
+      <p>4xx Client Error.</p>
+      <p>5xx Server Error.</p>
+      <p>6.3 Cloudflare.</p>
+    </div>
+  </div>
+</div>
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div style="overflow:auto;" id="Structure_CloudCoins" class="EchoService bgSec6 ">
+      <h2>Structure of CloudCoins</h2>
+      <table class="table-grid table-responsive ">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Range</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NN (Network Number)</td>
+            <td>To start with must be 1</td>
+            <td>Could increase later after doubling</td>
+          </tr>
+          <tr>
+            <td>SN (Serial Number)</td>
+            <td>1-16,777,215</td>
+            <td>The SN determines the denomination (1,5,25,100 or 250)</td>
+          </tr>
+          <tr>
+            <td>AN (Authenticity Numbers)</td>
+            <td>GUID without hyphens</td>
+            <td>There are 25 of these</td>
+          </tr>
+          <tr>
+            <td>AOID (Array Of Idiosynratic Data)</td>
+            <td>Array of key/value pairs</td>
+            <td>Optional. Used to make CloudCoins extensible.</td>
+          </tr>
+          <tr>
+            <td>POWN (Last Pown results)</td>
+            <td>25 symbols, 0 (unknown), 1 (pass) or F (fail) like '11111011001FF11F11111111'</td>
+            <td>Optional. Used to show the RAIDA status the last time the money was checked for Authenticity (may not be true)</td>
+          </tr>
+          <tr>
+            <td>Expiration Date</td>
+            <td>An integer that represents the number of months after August 2016 (zero month)</td>
+            <td>Optional. CloudCoins must be checked for Authenticity every two years because they are scavenged every two years for last CloudCoins.(may not be true)</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Denominations of CloudCoins</h2>
+      <div class="bgSec6table">
+        <table class="table-grid table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Day</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sentinels</td>
+              <td>Thursday</td>
+              <td>5pm UTC</td>
+            </tr>
+            <tr>
+              <td>Creators</td>
+              <td>Friday</td>
+              <td>7pm UTC</td>
+            </tr>
+            <tr>
+              <td>Chrysostomies</td>
+              <td>Saturday</td>
+              <td>5pm UTC</td>
+            </tr>
+            <tr>
+              <td>Achievers</td>
+              <td>Saturday</td>
+              <td>5am UTC</td>
+            </tr>
+            <tr>
+              <td>Explorers</td>
+              <td>Monday</td>
+              <td>5pm UTC</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="Multi_Detect" class="EchoService bgSec7">
+      <h2>Multi-Detect V 2/24/2018</h2>
+      <h4>Purpose:</h4>
+      <p>The RAIDA Multi Detection Protocol allows many coins to be authenticated at the same time.</p>
+      <h4>Example POST authenticating three coins</h4>
+      <p><span>https://RAIDA0.CloudCoin.Global/service/multi_detect
+        
+        nns[]=1&nns[]=1&nns[]=1&
+        
+        sns[]=145895&sns[]=66585&sns[]=16589554&
+        
+        ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
+        
+        pans[]=c7bea382188d404d8f0efc5969c54c5a&pans[]=75819e4721cb4970a2e2582d7e26318b&pans[]=0a4a8a4014264cbf8c00383ae180a152
+        
+        denomination[]=250&denomination[]=1&denomination[]=250</span></p>
+      <h4>RESPONSE:</h4>
+      <p><span>[{
+        
+        "server":"RAIDA1",
+        
+        "status":"pass",
+        
+        "sn":"145895",
+        
+        "nn":"1",
+        
+        "message":"Authentic:1 is an authentic 1-unit. Your Proposed Authenticity Number is now the new Authenticate Number. Update your file.",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        },
+        
+        {
+        
+        "server":"RAIDA1",
+        
+        "status":"pass",
+        
+        "sn":"66585",
+        
+        "nn":"1",
+        
+        "message":"Authentic:1 is an authentic 1-unit. Your Proposed Authenticity Number is now the new Authenticate Number. Update your file.",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        },
+        
+        {
+        
+        "server":"RAIDA1",
+        
+        "status":"pass",
+        
+        "sn":"16589554",
+        
+        "nn":"1",
+        
+        "message":"Authentic:1 is an authentic 1-unit. Your Proposed Authenticity Number is now the new Authenticate Number. Update your file.",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        }]</span></p>
+      <h4>RESPONSE IF TOO MANY COINS SENT (OVER 200)</h4>
+      <p><span>{
+        
+        "server":"RAIDA1",
+        
+        "status":"dud",
+        
+        "message":"Length: Too many coins attached.",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        }</span></p>
+      <p>RESPONSE IF ARRAY LENGTHS NOT THE SAME</p>
+      <p><span>{
+        
+        "server":"RAIDA1",
+        
+        "status":"dud",
+        
+        "message":"Length: Arrays not all the same length (nn,sn,an,denominations).",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        }</span></p>
+      
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="container">
+<div class="imgStandards"> <img src="images/grading process-crop-u11896.png" alt=""> </div>
+      <div class="imgStandards"> <img src="images/detection request lable-crop-u11906.jpg" alt=""> </div>
+      <div class="imgStandards"> <img src="images/powning_process-crop-u11916.png" alt=""> </div>
+</div>
+</div>
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="Structure_CloudCoina" class="EchoService bgSec8">
+      <h2>Structure of CloudCoins</h2>
+      <table class="table-grid table-responsive">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Range</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NN (Network Number)</td>
+            <td>To start with must be 1</td>
+            <td>Could increase later after doubling</td>
+          </tr>
+          <tr>
+            <td>SN (Serial Number)</td>
+            <td>1-16,777,215</td>
+            <td>The SN determines the denomination (1,5,25,100 or 250)</td>
+          </tr>
+          <tr>
+            <td>AN (Authenticity Numbers)</td>
+            <td>GUID without hyphens</td>
+            <td>There are 25 of these</td>
+          </tr>
+          <tr>
+            <td>AOID (Array Of Idiosynratic Data)</td>
+            <td>Array of key/value pairs</td>
+            <td>Optional. Used to make CloudCoins extensible.</td>
+          </tr>
+          <tr>
+            <td>POWN (Last Pown results)</td>
+            <td>25 symbols, 0 (unknown), 1 (pass) or F (fail) like '11111011001FF11F11111111'</td>
+            <td>Optional. Used to show the RAIDA status the last time the money was checked for Authenticity (may not be true)</td>
+          </tr>
+          <tr>
+            <td>Expiration Date</td>
+            <td>An integer that represents the number of months after August 2016 (zero month)</td>
+            <td>Optional. CloudCoins must be checked for Authenticity every two years because they are scavenged every two years for last CloudCoins.(may not be true)</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Denominations of CloudCoins</h2>
+      <div class="bgSec6table">
+        <table class="table-grid table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Day</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sentinels</td>
+              <td>Thursday</td>
+              <td>5pm UTC</td>
+            </tr>
+            <tr>
+              <td>Creators</td>
+              <td>Friday</td>
+              <td>7pm UTC</td>
+            </tr>
+            <tr>
+              <td>Chrysostomies</td>
+              <td>Saturday</td>
+              <td>5pm UTC</td>
+            </tr>
+            <tr>
+              <td>Achievers</td>
+              <td>Saturday</td>
+              <td>5am UTC</td>
+            </tr>
+            <tr>
+              <td>Explorers</td>
+              <td>Monday</td>
+              <td>5pm UTC</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="JPEG_File" class="EchoService bgSec9">
+      <h2>JPEG File Format for CloudCoins</h2>
+      <div class="imgStandards"> <img src="images/jpegformat.jpg" alt=""> </div>
+      <h2>CloudCoin JPEG File Naming Convention V 5.5.2017</h2>
+      <p>Users may name the jpegs what every they like.</p>
+      <p>Uncirculated coins are as follows: Denomination "CloudCoin", NN, SN, a user tag and ".jpg" separated by dots.</p>
+      <p>JPEG Example Filename:</p>
+      <p>250.cloudcoin.1.14589548.mintTagHere.jpg</p>
+      <table class="table-grid table-responsive">
+        <thead>
+          <tr>
+            <th>Byte Numbers Starting with Zero</th>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>File Bytes</th>
+            <th>Mandatory Hex Value</th>
+            <th>Value varies?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0 & 1</td>
+            <td>2</td>
+            <td>SOI (Start of Image)</td>
+            <td>Always the first bytes</td>
+            <td>FF D8</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>4 & 5</td>
+            <td>2</td>
+            <td>APP0 Length</td>
+            <td>Shows the Length of the APP0 Marker Excluding the first 2 bytes. In CloudCoins, this Equals 16+ 435 16 is fixed APPO stuff and 435 is the CloudCoin.</td>
+            <td>01 c3</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>6 => 10</td>
+            <td>5</td>
+            <td>File identity</td>
+            <td>Writes "JFIF" in ASCII, terminated by a null byte</td>
+            <td>4A 46 49 46 00</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>11 & 12</td>
+            <td>2</td>
+            <td>Version</td>
+            <td>First byte for major version, second byte for minor version (01 02 for 1.02)</td>
+            <td>01 01</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>1</td>
+            <td>Density units</td>
+            <td>00 or 01 = pixels per inch. 02 = pixels per centimeter.</td>
+            <td>01</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>14 & 15</td>
+            <td>2</td>
+            <td>Xdensity</td>
+            <td>?</td>
+            <td>00 60</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>16 & 17</td>
+            <td>2</td>
+            <td>Ydensity</td>
+            <td>?</td>
+            <td>00 60</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>18</td>
+            <td>1</td>
+            <td>Thumbnail Horizontal Pixel Count</td>
+            <td>CloudCoin data is in the thumbnail and is 29 pixels wide</td>
+            <td>1D</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>19</td>
+            <td>1</td>
+            <td>Thumbnail Vertical Pixel Count</td>
+            <td>CloudCoin data is in the thumbnail and is 5 pixels high</td>
+            <td>05</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td colspan="6">CloudCoin in Thumbnail: Each pixel holds three bytes. So 29 pixels by 5 pixels = 45 pixels. 45* 3 bytes each = 435 bytes for the entire CloudCoin.</td>
+          </tr>
+          <tr>
+            <td>20 => 419</td>
+            <td>400</td>
+            <td>ANs: 25 Authenticity Numbers</td>
+            <td>25 GUIDs without hyphens. The Jpeg thumbnail dimensions are 29 pixels * 5 pixels * 3 bytes each = 435 bytes. Each AN is 16 bytes and 25 x 16 = 400 bytes so there are 35 bytes left for other info (AOID, Has Comment, Health Status, Expiration Date, Network Number and Serial Number. </td>
+            <td>Too Large to show</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>420 => 435</td>
+            <td>16</td>
+            <td>AOID: Account / Owner ID</td>
+            <td>Bytes can be used by the owner for their uses.</td>
+            <td>Too Large to show</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>436 =>448</td>
+            <td>13</td>
+            <td>POWN: Results of last pown attempt</td>
+            <td>0 (unknown), 1 (pass),2 (no Response), E (error) or F (fail) '.</td>
+            <td>Hex 11111011001f11111111211e199 The last nibble can be ignorred</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>449</td>
+            <td>1</td>
+            <td>HC: Has comments?</td>
+            <td>Indicates if there are any other information in the comments section of the Jpeg that is used by applications.</td>
+            <td>00 = No, More than zero = Yes (Program should look in the comments section of JPEG for more owner information). There is room for 255 codes so if you need to put some data it could fit here.</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>450</td>
+            <td>1</td>
+            <td>ED: Expiration Date</td>
+            <td>Months from zero month (August 2016). </td>
+            <td>Hex 18 = 24 months since zero or August 2018 </td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>451</td>
+            <td>1</td>
+            <td>NN: Network Number</td>
+            <td> 1 Through 256</td>
+            <td>01</td>
+            <td>Yes</td>
+          </tr>
+            </tr>
+          
+          <tr>
+            <td>452, 453 & 454</td>
+            <td>3</td>
+            <td>SN: Serial Number</td>
+            <td>sn in Hex 6 bytes FF FFFF = 16,777,215</td>
+            <td>FF FFFF</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+          <td colspan="6">Rest of JPEG Image. Size will vary</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="JSON_File" class="EchoService bgSec10">
+      <h2>JSON File Format V 5.5.2017</h2>
+      <p>CloudCoin JSON File Naming Convention:</p>
+      <p>Total Amount of CloudCoins in file, ".CloudCoin" , then a random number or use defined tab in case there are other stack/chests with the same amount of CloudCoins separated by dots. The extension could be Chest or stack.</p>
+      <p>Example: 12750.cloudcoin.mytag.stack</p>
+      <p>Stack files are for the public. Chest files are for founders uncirculated coins. 12750.cloudcoin.userTagHere.chest CloudCoins should be stored in folders that reflect their status. Or, if they are all kept in the same folder then If the stack is full of counterfeit CloudCoins then it may have a .counterfeit extension. If the stack is full of lost coins then it may have the .lost extension. If the stack has a .fracked extension, it is full of fracked coins. If the coins are enctypted using software, then it does not matter.</p>
+      <table class="table-grid table-responsive">
+        <thead>
+        <div class="tabHead">CloudCoin JSON File Naming Convention: Total Amount of CloudCoins in file, ".CloudCoin" , then a random number or use defined tab in case there are other stack/chests with the same amount of CloudCoins separated by dots. The extension could be Chest or stack. Example: 12750.cloudcoin.mytag.stack. Stack files are for the public. Chest files are for founders uncirculated coins. 12750.cloudcoin.userTagHere.chest If the stack is full of counterfeit CloudCoins then it may have a .counterfeit extension. If the stack is full of lost coins then it may have the .lost extension. If the stack has a .fracked extension, it is full of fracked coins. </div>
+          <tr>
+            <th>Key</th>
+            <th>Sample Value</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NN</td>
+            <td>1</td>
+            <td>Network Number (1-256)</td>
+          </tr>
+          <tr>
+            <td>SN</td>
+            <td>16,777,216</td>
+            <td>Serial Number (1-16,777,216)</td>
+          </tr>
+          <tr>
+            <td>ANs</td>
+            <td>2E2720222C231C1C2837292C30313434</td>
+            <td>Array of 25 ANs.</td>
+          </tr>
+          <tr>
+            <td>ED</td>
+            <td>9-2016</td>
+            <td>Expiration Date. Month and year separated with a hyphen.</td>
+          </tr>
+          <tr>
+            <td>POWN (Optional)</td>
+            <td>ppfpppppppppppupppppeppp</td>
+            <td>Last Health Status. Tracking the status of detection attempts. p = passed, f= failed, e=error, u = undetected, n = No response from RAIDA</td>
+          </tr>
+          <tr>
+            <td>AOID</td>
+            <td>from_email=Sean@Worthington.com</td>
+            <td>Array of key value pairs created by the user for the user. Ok to leave blank but at least add [].</td>
+          </tr>
+         
+        </tbody>
+      </table>
+      <div class="jasonbg"><p> Here is a sample JSON file with two CloudCoins in it:</p>
+      <pre>{
+	"cloudcoin": [{
+		"nn": "1",
+		"sn": "16777215",
+		"an": ["6A415F1CC541353C9AA5CE6FEAFC15B3", "1F07C89ACEF44EFC936C3685EF013D32",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", 
+                       "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", 
+                       "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", 
+                       "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", 
+                       "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3"],
+		"ed": "9-2016",
+                        "pown":"ppeppppppfppppppnpppupppp",
+		"aoid": []
+	}, {
+		"nn": "1",
+		"sn": "24589",
+		"an": ["7A415F1CC541353C9AA5CE6FEAFC15B3", "1F07C89ACEF44EFC936C3685EF013D32",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", 
+                       "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3",
+
+                       "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", 
+                       "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", 
+                       "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3", "6A415F1CC541353C9AA5CE6FEAFC15B3",
+ "6A415F1CC541353C9AA5CE6FEAFC15B3"],
+		"ed": "9-2016",
+		"aoid": ["from_email=Sean@Worthington.com", "account=859562525630"]
+	}]
+}
+
+
+</pre>
+</div>
+    </div>
+  </div>
+</div>
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="AOID_Standards" class="EchoService bgSec11">
+      <h2>AOID Standards</h2>
+      <p>The AOID is a place that the owner of the CloudCoin can store data. This can be anything at all. But it is an array of strings. AOID used internally for applications. AOID can be ignored by apps and data should be stripped when importing. Here is a standard for internal user</p>
+      <table class="table-grid table-responsive">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Sample Value</th>
+            <th>Explanation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>fracked</td>
+            <td>ppfpppppppppppupppppeppp</td>
+            <td>Tracking the status of detection attempts. p = passed, f= failed, e=error, u = undetected</td>
+          </tr>
+          <tr>
+            <td>app_status</td>
+            <td>Sample Value</td>
+            <td>Statuses include "suspect", "fracked", "authentic", "counterfeit", "exported","lost"</td>
+          </tr>
+          <tr>
+            <td>from_email</td>
+            <td>Sean@Worthington.com</td>
+            <td>The email of the person who sent the money</td>
+          </tr>
+          <tr>
+            <td>from_name</td>
+            <td>Sample Value</td>
+            <td>Who gave it to you.</td>
+          </tr>
+          <tr>
+            <td>from_account</td>
+            <td>568545221474</td>
+            <td>Whos account it is for?</td>
+          </tr>
+          <tr>
+            <td>memo</td>
+            <td>Can I write anything here?</td>
+            <td>Yes you can</td>
+          </tr>
+          <tr>
+            <td>date_recieved</td>
+            <td>2016-09-15 5:30:20"</td>
+            <td>Date the coin was recieved</td>
+          </tr>
+          <tr>
+            <td>date_sent</td>
+            <td>2016-09-15 5:30:20"</td>
+            <td>Date you sent it to someone else</td>
+          </tr>
+          <tr>
+            <td>escrow_id</td>
+            <td>85521144</td>
+            <td>If the money is kept for escrow</td>
+          </tr>
+          <tr>
+            <td>fund</td>
+            <td>Vacation</td>
+            <td>What every pupose the money will be used for.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="container">
+    <div id="Grading_CloudCoins" class="EchoService bgSec12">
+      <h2>Grading CloudCoins After Detection</h2>
+      
+        <div style="background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;"><strong><font color="#7f0055">public</font></strong>&nbsp;String[]&nbsp;gradeStatus(){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">int</font></strong>&nbsp;passed&nbsp;=&nbsp;0; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">int</font></strong>&nbsp;failed&nbsp;=&nbsp;0; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">int</font></strong>&nbsp;other&nbsp;=&nbsp;0; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;passedDesc&nbsp;=<font color="#2a00ff">""</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;failedDesc&nbsp;=<font color="#2a00ff">""</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;otherDesc&nbsp;=<font color="#2a00ff">""</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">for</font></strong>(&nbsp;<strong><font color="#7f0055">int</font></strong>&nbsp;i=0;&nbsp;i&lt;&nbsp;25;&nbsp;i++&nbsp;){ <br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;pastStatus[i].equalsIgnoreCase(<font color="#2a00ff">"pass"</font>)&nbsp;&nbsp;){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passed++; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;pastStatus[i].equalsIgnoreCase(<font color="#2a00ff">"fail"</font>)){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failed++; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>{ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other++; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<font color="#3f7f5f">//end&nbsp;if&nbsp;pass,&nbsp;fail&nbsp;or&nbsp;unknown </font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<font color="#3f7f5f">//for&nbsp;each&nbsp;status </font><br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#3f7f5f">//Calculate&nbsp;passed </font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;passed&nbsp;==&nbsp;25&nbsp;){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passedDesc&nbsp;=&nbsp;<font color="#2a00ff">"100%&nbsp;Passed!"</font>;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;passed&nbsp;&gt;&nbsp;17&nbsp;){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passedDesc&nbsp;=&nbsp;<font color="#2a00ff">"Super&nbsp;Majority"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;passed&nbsp;&gt;&nbsp;13){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passedDesc&nbsp;=&nbsp;<font color="#2a00ff">"Majority"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;passed&nbsp;==&nbsp;0){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passedDesc&nbsp;=&nbsp;<font color="#2a00ff">"None"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(passed&nbsp;&lt;&nbsp;5)&nbsp;{ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passedDesc&nbsp;=&nbsp;<font color="#2a00ff">"Super&nbsp;Minority"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>{ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passedDesc&nbsp;=&nbsp;<font color="#2a00ff">"Minority"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#3f7f5f">//Calculate&nbsp;failed </font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;failed&nbsp;==&nbsp;25&nbsp;){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failedDesc&nbsp;=&nbsp;<font color="#2a00ff">"100%&nbsp;Failed!"</font>;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;failed&nbsp;&gt;&nbsp;17&nbsp;){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failedDesc&nbsp;=&nbsp;<font color="#2a00ff">"Super&nbsp;Majority"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;failed&nbsp;&gt;&nbsp;13){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failedDesc&nbsp;=&nbsp;<font color="#2a00ff">"Majority"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;failed&nbsp;==&nbsp;0){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failedDesc&nbsp;=&nbsp;<font color="#2a00ff">"None"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(failed&nbsp;&lt;&nbsp;5)&nbsp;{ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failedDesc&nbsp;=&nbsp;<font color="#2a00ff">"Super&nbsp;Minority"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color="#7f0055">else</font></strong>{ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failedDesc&nbsp;=&nbsp;<font color="#2a00ff">"Minority"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#3f7f5f">//Calcualte&nbsp;Other&nbsp;RAIDA&nbsp;Servers&nbsp;did&nbsp;not&nbsp;help.&nbsp; </font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">switch</font></strong>(&nbsp;other&nbsp;){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;0:&nbsp;otherDesc&nbsp;=&nbsp;<font color="#2a00ff">"100%&nbsp;of&nbsp;RAIDA&nbsp;responded"</font>;&nbsp;<strong><font color="#7f0055">break</font></strong>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;1:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;2:&nbsp;otherDesc&nbsp;=&nbsp;<font color="#2a00ff">"Four&nbsp;or&nbsp;less&nbsp;RAIDA&nbsp;errors"</font>;&nbsp;<strong><font color="#7f0055">break</font></strong>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;3:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;4:&nbsp;otherDesc&nbsp;=&nbsp;<font color="#2a00ff">"Four&nbsp;or&nbsp;less&nbsp;RAIDA&nbsp;errors"</font>;&nbsp;<strong><font color="#7f0055">break</font></strong>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;5:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;6:&nbsp;otherDesc&nbsp;=&nbsp;<font color="#2a00ff">"Six&nbsp;or&nbsp;less&nbsp;RAIDA&nbsp;errors"</font>;&nbsp;<strong><font color="#7f0055">break</font></strong>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;7:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;8:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;9:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;10:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;11:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;12:&nbsp;&nbsp;otherDesc&nbsp;=&nbsp;<font color="#2a00ff">"Between&nbsp;7&nbsp;and&nbsp;12&nbsp;RAIDA&nbsp;errors"</font>;&nbsp;<strong><font color="#7f0055">break</font></strong>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;13:&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;14:&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;15:&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;16:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;17:&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;18:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;19:&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;20:&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;21:&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;22:&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;23:&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;24:&nbsp;&nbsp; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">case</font></strong>&nbsp;25:&nbsp;otherDesc&nbsp;=&nbsp;<font color="#2a00ff">"RAIDA&nbsp;total&nbsp;failure"</font>;&nbsp;<strong><font color="#7f0055">break</font></strong>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">default</font></strong>:&nbsp;otherDesc&nbsp;=&nbsp;<font color="#2a00ff">"FAILED&nbsp;TO&nbsp;EVALUATE&nbsp;RAIDA&nbsp;HEALTH"</font>;&nbsp;<strong><font color="#7f0055">break</font></strong>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<font color="#3f7f5f">//end&nbsp;RAIDA&nbsp;other&nbsp;errors&nbsp;and&nbsp;unknowns </font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#3f7f5f">//Coin&nbsp;will&nbsp;go&nbsp;to&nbsp;bank,&nbsp;counterfeit&nbsp;or&nbsp;fracked </font><br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">if</font></strong>(other&nbsp;&gt;&nbsp;12) <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<font color="#3f7f5f">//not&nbsp;enough&nbsp;RAIDA&nbsp;to&nbsp;have&nbsp;a&nbsp;quorum </font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">this</font></strong>.extension&nbsp;=&nbsp;<font color="#2a00ff">"suspect"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;failed&nbsp;&gt;&nbsp;passed&nbsp;) <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<font color="#3f7f5f">//failed&nbsp;out&nbsp;numbers&nbsp;passed&nbsp;with&nbsp;a&nbsp;quorum:&nbsp;Counterfeit </font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">this</font></strong>.extension&nbsp;=&nbsp;<font color="#2a00ff">"counterfeit"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">else</font></strong>&nbsp;<strong><font color="#7f0055">if</font></strong>(&nbsp;failed&nbsp;&gt;&nbsp;0) <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<font color="#3f7f5f">//The&nbsp;quorum&nbsp;majority&nbsp;said&nbsp;the&nbsp;coin&nbsp;passed&nbsp;but&nbsp;some&nbsp;disagreed:&nbsp;fracked.&nbsp; </font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">this</font></strong>.extension&nbsp;=&nbsp;<font color="#2a00ff">"fracked"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">else</font></strong> <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<font color="#3f7f5f">//No&nbsp;fails,&nbsp;all&nbsp;passes:&nbsp;bank </font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">this</font></strong>.extension&nbsp;=&nbsp;<font color="#2a00ff">"bank"</font>; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">this</font></strong>.gradeStatus[0]&nbsp;=&nbsp;passedDesc; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">this</font></strong>.gradeStatus[1]&nbsp;=&nbsp;failedDesc; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">this</font></strong>.gradeStatus[2]&nbsp;=&nbsp;otherDesc; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color="#7f0055">return</font></strong>&nbsp;&nbsp;gradeStatus; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<font color="#3f7f5f">//end&nbsp;gradeStatus</font>
+            <div style="text-align:right;BORDER-TOP: #ccc 1px dashed"><a href="http://www.togotutor.com/code-to-html/java-to-html.php" target="_blank">Code Formatted by ToGoTutor</a></div>
+          </div>
+      <div id="mony" class="mony">
+        <h2>Standard Money images</h2>
+        <div class="imgStandards"> <img src="images/jpeg250.jpg" alt="#"> </div>
+      </div>
+      <div class="mony">
+        <div class="imgStandards"> <img src="images/jpeg100.jpg" alt="#"> </div>
+      </div>
+      <div class="mony">
+        <div class="imgStandards"> <img src="images/jpeg1002.jpg" alt="#"> </div>
+      </div>
+      <div class="mony">
+        <div class="imgStandards"> <img src="images/jpeg25.jpg" alt="#"> </div>
+      </div>
+      <div class="mony">
+        <div class="imgStandards"> <img src="images/jpeg5.jpg" alt="#"> </div>
+      </div>
+      <div class="mony">
+        <div class="imgStandards"> <img src="images/jpeg1.jpg" alt="#"> </div>
+      </div>
+      <div class="mony">
+        <div class="imgStandards"> <img src="images/164078368.jpg" alt="#"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Sec -->
+<div class="wrapper">
+  <div class="container">
+    <div id="Mind_Storage" class="EchoService bgSec13">
+      <h2>Mind Storage V 6.20.2017</h2>
+      <p>CloudCoin are the first currency that can be stored in your mind. Here are the standards for create ANs based on what you know:</p>
+      <p>Mind storage provides maximum security the user may store the Serial Numbers of their CloudCoins on paper and then the ANs in their mind..</p>
+      <p>Requires two Pass-phrase.</p>
+      <p>Both are turned into Hex String.</p>
+      <p>Pass-phrase: rules:</p>
+      <p>1. Cannot start with white space. Cannot end with white space. All all other codes are allowed. White space includes carriage returns, spaces, tabs, etc.</p>
+      <p>2. Paraphrases cannot be the same.</p>
+      <p>3. The two paraphrases combined must have a length of over 17 bytes.</p>
+      <p>Note: For better security, it is advised that Westerners should use 8 byte encoding. Others should use Unicode 16 byte encoding.</p>
+      <p>Examples</p>
+      <p>First Pass-phrase:</p>
+      <p><span>We love CloudCoins!</span></p>
+      <p>Second Pass-phrase:</p>
+      <p><span>I store them in my mind.</span></p>
+      <p>Pass-phrase 1 converted to a Hexadecimal String:</p>
+      <p><span>5765206c6f766520436c6f7564436f696e7321</span></p>
+      <p>Pass-phrase 2 converted to a Hexadecimal String:</p>
+      <p><span>492073746f7265207468656d20696e206d79206d696e642e</span></p>
+      <p>The pass phrases are merged into a composite string:</p>
+      <p>Pass-phrase 1 becomes the odd indexes an pass-phrase 2 becomes the even indexes (note the first number is index 1):</p>
+      <p>Left overs from the longer string are added to the end (hyphen added for better visualization of the end)</p>
+      <p><span>54796250270367c466ff776266552200473466c866f5765d624046396ef260966de-6d696e642e</span></p>
+      <p>String is the repeated until there are 800 characters. Any extra characters are cut off:</p>
+      <p><span>54796250270367c466ff776266552200473466c866f5765d624046396ef260966de6d696e642e54796250270367c466ff77<br>
+        6266552200473466c866f5765d624046396ef260966de6d696e642e54796250270367c466ff776266552200473466c866f5<br>
+        765d624046396ef260966de6d696e642e54796250270367c466ff776266552200473466c866f5765d624046396ef260966d<br>
+        e6d696e642e54796250270367c466ff776266552200473466c866f5765d624046396ef260966de6d696e642e54796250270<br>
+        367c466ff776266552200473466c866f5765d624046396ef260966de6d696e642e54796250270367c466ff7762665522004<br>
+        73466c866f5765d624046396ef260966de6d696e642e54796250270367c466ff776266552200473466c866f5765d6240463<br>
+        76ef260966de6d696e642e54796250270367c466ff776266552200473466c866f5765d624046396ef260966de6d696e642e<br>
+        54796250270367c466ff776266552200473466c866f5765d624046396ef260966de6d696e642e54796250270367c466ff77<br>
+        62665522</span></p>
+      <p>The 800 characters are cut into 25 different PANs with a length of 32 characters each. Each PAN is used during detection so that it becomes the new AN.</p>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="container">
+    <div id="Multi_Detectl"  class="EchoService bgSec14">
+      <h2>Multi-Detect V 2/24/2018</h2>
+      <p>The RAIDA Multi Detection Protocol allows many coins to be authenticated at the same time.</p>
+      <h4>Example POST authenticating three coins</h4>
+      <p><span>https://RAIDA0.CloudCoin.Global/service/multi_detect
+        
+        nns[]=1&nns[]=1&nns[]=1&
+        
+        sns[]=145895&sns[]=66585&sns[]=16589554&
+        
+        ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
+        
+        pans[]=c7bea382188d404d8f0efc5969c54c5a&pans[]=75819e4721cb4970a2e2582d7e26318b&pans[]=0a4a8a4014264cbf8c00383ae180a152
+        
+        denomination[]=250&denomination[]=1&denomination[]=250</span></p>
+      <h4>RESPONSE:</h4>
+      <p>[{
+        
+        "server":"RAIDA1",
+        
+        "status":"pass",
+        
+        "sn":"145895",
+        
+        "nn":"1",
+        
+        "message":"Authentic:1 is an authentic 1-unit. Your Proposed Authenticity Number is now the new Authenticate Number. Update your file.",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        },
+        
+        {
+        
+        "server":"RAIDA1",
+        
+        "status":"pass",
+        
+        "sn":"66585",
+        
+        "nn":"1",
+        
+        "message":"Authentic:1 is an authentic 1-unit. Your Proposed Authenticity Number is now the new Authenticate Number. Update your file.",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        },
+        
+        {
+        
+        "server":"RAIDA1",
+        
+        "status":"pass",
+        
+        "sn":"16589554",
+        
+        "nn":"1",
+        
+        "message":"Authentic:1 is an authentic 1-unit. Your Proposed Authenticity Number is now the new Authenticate Number. Update your file.",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        }]</p>
+      <h4>RESPONSE IF TOO MANY COINS SENT (OVER 200)</h4>
+      <p>{
+        
+        "server":"RAIDA1",
+        
+        "status":"dud",
+        
+        "message":"Length: Too many coins attached.",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        }</p>
+      <h4>RESPONSE IF ARRAY LENGTHS NOT THE SAME</h4>
+      <p>{
+        
+        "server":"RAIDA1",
+        
+        "status":"dud",
+        
+        "message":"Length: Arrays not all the same length (nn,sn,an,denominations).",
+        
+        "time":"2016-44-19 7:44:PM"
+        
+        }</p>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="container">
+    <div class="imgStandards"> <img src="images/grading process-crop-u11896.png" alt=""> </div>
+    <div class="imgStandards"> <img src="images/detection request lable-crop-u11906.jpg" alt=""> </div>
+    <div class="imgStandards"> <img src="images/powning_process-crop-u11916.png" alt=""> </div>
+  </div>
+</div>
+<!-- End Content -->
+<div class="wrapper">
+  <div class="footer">
+    <div class="footerInner">
+      <div class="container">
+        <div class="footerLeft"> <a href="#"><img src="images/stamp.jpg" alt=""></a> </div>
+        <div class="footerRight">
+          <p>© The CloudCoin Consortium. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+</body>
+</html>

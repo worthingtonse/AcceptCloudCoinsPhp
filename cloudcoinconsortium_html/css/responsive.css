@@ -1,0 +1,286 @@
+@media only screen and (max-width:1198px) {
+.container {
+ width:100%;
+}
+.wrapper {
+ width: 100%;
+}
+.nav > li {
+ padding-left: 10px;
+}
+.navbar-inverse .navbar-nav > li > a {
+ font-size: 13px;
+}
+.carouselText {
+ width: 80%;
+}
+.DirectoryServices p, .EchoService p {
+	word-wrap: break-word;
+}
+}
+@media only screen and (max-width:998px) {
+.container {
+ width:100%;
+}
+.wrapper {
+ width: 100%;
+}
+.navbar-inverse .navbar-toggle {
+ border-color: #af9f7b;
+ background: #af9f7b;
+ margin-top: 17px;
+}
+.navbar-nav li:hover {
+ background: #af9f7b;
+}
+.carouselText {
+ width: 100%;
+padding: 180px 20px;
+}
+.nav > li > a {
+ padding: 10px 10px;
+}
+.navbar-inverse .navbar-nav > li > a {
+font-size: 12px;
+}
+.content h1 {
+ font-size: 64px;
+ top: -33px;
+}
+.banner h1 {
+ line-height:50px;
+ padding:20px 0;
+ font-size: 34px;
+}
+.banner p {
+padding-right:0;
+}
+.banner p {
+font-size: 20px;
+line-height:30px;
+}
+.contentInfo {
+width: 91%;
+ padding: 0 20px;
+}
+.content {
+ background: #fff;
+ padding: 50px 0;
+}
+.content li {
+ width:32%;
+ padding-bottom: 30px;
+}
+.contentInner {
+ padding: 50px 20px;
+}
+.nav > li {
+ padding-left: 0;
+}
+.contentInner h1 {
+ font-size: 34px;
+ top: -20px;
+}
+.footerLeft img {
+ width: 90px;
+}
+.secInfo {
+ width:100%;
+ padding:20px;
+ text-align: left;
+}
+.content {
+ padding: 50px 0 0;
+}
+.content li a {
+font-size:15px;
+}
+.footerRight {
+ width: 80%;
+ padding-top: 32px;
+}
+}
+ @media only screen and (max-width:767px) {
+.container {
+ width:100%;
+}
+.bgSec6table {
+
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+.wrapper {
+ width: 100%;
+}
+.navbar-inverse .navbar-toggle {
+ border-color: #af9f7b;
+ background: #af9f7b;
+ margin-top: 17px;
+}
+.DirectoryServices h2, .EchoService h2 {
+    font-size: 24px;
+    line-height: 28px;
+
+}
+.fileType li {
+
+    font-size: 16px;
+    line-height: 24px;
+
+}
+.CloudStandards h1 {
+	font-size: 26px;
+	text-align: left;
+	line-height: 28px;
+	padding-bottom: 20px;
+}
+.CloudStandards {
+	padding: 20px 0;
+}
+.fileType h2 {
+	font-size: 24px;
+	line-height: 25px;
+	text-align:left;
+	padding-bottom: 20px;
+}
+.navbar-nav li:hover {
+ background: #af9f7b;
+}
+.carouselText {
+ width: 100%;
+padding: 180px 20px;
+}
+ .content h1 {
+ font-size: 64px;
+ top: -33px;
+}
+.banner h1 {
+ line-height:50px;
+ padding:20px 0;
+ font-size: 34px;
+}
+.banner p {
+padding-right:0;
+}
+.banner p {
+font-size: 20px;
+line-height:30px;
+}
+.contentInfo {
+width: 91%;
+ padding: 0 20px;
+}
+.content {
+ background: #fff;
+ padding: 50px 0;
+}
+.content li {
+ width: 50%;
+ padding-bottom: 30px;
+}
+.contentInner {
+ padding: 50px 20px;
+}
+.nav > li {
+ padding-left: 0;
+}
+.contentInner h1 {
+ font-size: 34px;
+ top: -20px;
+}
+.footerLeft img {
+ width: 90px;
+}
+.secInfo {
+ width:100%;
+ padding:20px;
+}
+.content li a {
+font-size:12px;
+}
+.footerLeft, .footerRight {
+ width: 100%;
+ text-align: center;
+}
+.footerRight {
+ padding: 28px 0;
+ float: left;
+}
+.footerRight p {
+ font-size: 12px;
+ line-height: 16px;
+}
+.membership h2 {
+font-size:28px;
+}
+.membership h3 {
+padding: 10px 0;
+font-size:22px;
+}
+.membership p {
+padding-left:0;
+}
+.membership {
+ padding: 20px;
+}
+.contactInner {
+ width: 100%;
+padding: 40px 20px;
+}
+.softwareInner {
+ padding: 20px;
+}
+.softwareInner h1 {
+font-size:34px;
+}
+.softwareInner h2 {
+font-size:22px;
+line-height:26px;
+}
+.meetingsInner {
+ width: 100%;
+ padding:20px;
+}
+.meetings {
+ padding: 60px 0;
+}
+.table-grid th, .table-grid td {
+    padding: 10px;
+}
+.table-grid td {
+    font-size: 12px;
+
+}
+.meetingsInner h2 {
+    font-size: 34px;
+    line-height:40px;
+
+
+}
+.aboutSec {
+    padding: 20px;
+
+}
+.aboutSec h2 {
+
+    font-size: 24px;
+    line-height: 28px;
+
+}
+.aboutSec h4 {
+    font-size: 20px;
+
+}
+}
+@media only screen and (max-width:480px) {
+ .carouselText {
+ width: 100%;
+padding: 80px 20px;
+}
+.content h1 {
+ font-size: 40px;
+ top: -20px;
+}
+}
